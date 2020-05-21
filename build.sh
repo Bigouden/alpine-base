@@ -4,7 +4,7 @@
 # Global Variables #
 ####################
 
-IMAGE="alpine-base"
+IMAGE="$CI_PROJECT_NAME"
 OS_ARCHITECTURE="x86_64"
 OS_DISTRIBUTION="alpine-minirootfs"
 OS_MAJOR_VERSION="3.11"
