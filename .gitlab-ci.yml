@@ -1,0 +1,19 @@
+include:
+  - project: 'Bigouden/gitlab-ci-templates'
+    file: '.gitlab-ci-docker.yml'
+    
+stages:
+  - Build
+  - Inspect
+  - Test
+  - Release
+  
+APK:
+  stage: Test
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - docker pull $CONTAINER_TEST_IMAGE
+    - docker run --name TEST $CONTAINER_TEST_IMAGE apk info
+  variables:
+    GIT_STRATEGY: none
