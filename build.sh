@@ -23,7 +23,7 @@ checksum () {
     log "Checksum Control ..."
     log "FILE   :  $(sha256sum ${2})"
     log "SHA256 :  $(cat ${1})"
-    sha256sum --check --status ${1} || { RCODE=${?}; log "Failed to verify checksum for file : ${2}" ; exit ${RCODE}; }
+    sha256sum -c -s ${1} || { RCODE=${?}; log "Failed to verify checksum for file : ${2}" ; exit ${RCODE}; }
     log "Checksum Control OK"
 }
 
