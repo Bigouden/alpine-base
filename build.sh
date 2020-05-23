@@ -12,8 +12,8 @@ OS_VERSION="${OS_MAJOR_VERSION}.6"
 COMPRESS_ROOTFS_FILE=${OS_DISTRIBUTION}-${OS_VERSION}-${OS_ARCHITECTURE}.tar.gz
 COMPRESS_SHA256_FILE=${OS_DISTRIBUTION}-${OS_VERSION}-${OS_ARCHITECTURE}.tar.gz.sha256
 ROOTFS_FILE=${OS_DISTRIBUTION}-${OS_VERSION}-${OS_ARCHITECTURE}.tar
-ROOTFS_URL=http://dl-cdn.alpinelinux.org/alpine/v${OS_MAJOR_VERSION}/releases/${OS_ARCHITECTURE}/${ROOTFS_FILE}
-SHA256_URL=http://dl-cdn.alpinelinux.org/alpine/v${OS_MAJOR_VERSION}/releases/${OS_ARCHITECTURE}/${SHA256_FILE}
+ROOTFS_URL=http://dl-cdn.alpinelinux.org/alpine/v${OS_MAJOR_VERSION}/releases/${OS_ARCHITECTURE}/${COMPRESS_ROOTFS_FILE}
+SHA256_URL=http://dl-cdn.alpinelinux.org/alpine/v${OS_MAJOR_VERSION}/releases/${OS_ARCHITECTURE}/${COMPRESS_SHA256_FILE}
 
 ##########################
 # Functions Declarations #
