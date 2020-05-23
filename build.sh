@@ -9,11 +9,10 @@ OS_ARCHITECTURE="x86_64"
 OS_DISTRIBUTION="alpine-minirootfs"
 OS_MAJOR_VERSION="3.11"
 OS_VERSION="${OS_MAJOR_VERSION}.6"
-COMPRESS_ROOTFS_FILE=${OS_DISTRIBUTION}-${OS_VERSION}-${OS_ARCHITECTURE}.tar.gz
-COMPRESS_SHA256_FILE=${OS_DISTRIBUTION}-${OS_VERSION}-${OS_ARCHITECTURE}.tar.gz.sha256
-ROOTFS_FILE=${OS_DISTRIBUTION}-${OS_VERSION}-${OS_ARCHITECTURE}.tar
-ROOTFS_URL=http://dl-cdn.alpinelinux.org/alpine/v${OS_MAJOR_VERSION}/releases/${OS_ARCHITECTURE}/${COMPRESS_ROOTFS_FILE}
-SHA256_URL=http://dl-cdn.alpinelinux.org/alpine/v${OS_MAJOR_VERSION}/releases/${OS_ARCHITECTURE}/${COMPRESS_SHA256_FILE}
+ROOTFS_FILE=${OS_DISTRIBUTION}-${OS_VERSION}-${OS_ARCHITECTURE}.tar.gz
+SHA256_FILE=${OS_DISTRIBUTION}-${OS_VERSION}-${OS_ARCHITECTURE}.tar.gz.sha256
+ROOTFS_URL=http://dl-cdn.alpinelinux.org/alpine/v${OS_MAJOR_VERSION}/releases/${OS_ARCHITECTURE}/${ROOTFS_FILE}
+SHA256_URL=http://dl-cdn.alpinelinux.org/alpine/v${OS_MAJOR_VERSION}/releases/${OS_ARCHITECTURE}/${SHA256_FILE}
 
 ##########################
 # Functions Declarations #
@@ -55,11 +54,11 @@ log () {
 ########
 
 # Download Files
-download ${COMPRESS_ROOTFS_FILE} ${ROOTFS_URL}
-download ${COMPRESS_SHA256_FILE} ${SHA256_URL}
+download ${ROOTFS_FILE} ${ROOTFS_URL}
+download ${SHA256_FILE} ${SHA256_URL}
 
 # Checksum Control
-checksum ${COMPRESS_SHA256_FILE} ${COMPRESS_ROOTFS_FILE}
+checksum ${SHA256_FILE} ${ROOTFS_FILE}
 
 # Docker Import
 import ${ROOTFS_FILE} ${IMAGE}
