@@ -28,15 +28,6 @@ checksum () {
     log "Checksum Control OK"
 }
 
-# Cleanup
-clean () {
-    log "Cleaning ..."
-    log "FILE : ${1}"
-    gunzip ${1} || { RCODE=${?}; log "Failed to uncompress RootFS : ${1}"; exit ${RCODE}; }
-    tar -f ${2} --wildcards --delete ./lib/apk/db/* || { RCODE=${?}; log "Failed to clean RootFS : ${2}"; exit ${RCODE}; }
-    log "Clean OK"
-}
-
 # Downloading
 download () {
     log "Downloading ..."
@@ -69,9 +60,6 @@ download ${COMPRESS_SHA256_FILE} ${SHA256_URL}
 
 # Checksum Control
 checksum ${COMPRESS_SHA256_FILE} ${COMPRESS_ROOTFS_FILE}
-
-# Clean RootFS
-clean ${COMPRESS_ROOTFS_FILE} ${ROOTFS_FILE}
 
 # Docker Import
 import ${ROOTFS_FILE} ${IMAGE}
