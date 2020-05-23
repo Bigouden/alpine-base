@@ -29,12 +29,13 @@ checksum () {
 }
 
 # Cleanup
-clean ()
+clean () {
     log "Cleaning ..."
     log "FILE : ${1}"
     gunzip ${1} || { RCODE=${?}; log "Failed to uncompress RootFS : ${1}"; exit ${RCODE}; }
     tar -f ${2} --wildcards --delete ./lib/apk/db/* || { RCODE=${?}; log "Failed to clean RootFS : ${2}"; exit ${RCODE}; }
     log "Clean OK"
+}
 
 # Downloading
 download () {
